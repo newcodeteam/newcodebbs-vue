@@ -5,18 +5,33 @@ import 'nprogress/nprogress.css'
 
 const requests=axios.create({
     baseURL:'/api',
-    timeout:5000
+    timeout: 5000,
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+    }
 })
 requests.interceptors.request.use((config)=>{
     nprogress.start()
-    console.log(store)
+    //将验证码标识放入请求头中进行发送
+    console.log('请求一次')
+    let reqMsg = sessionStorage.getItem("reqMsg")
+    
+    if (reqMsg) {
+        
+        config.headers["reqMsg"] = reqMsg
+    }
+
     return config
 })
 requests.interceptors.response.use((res)=>{
     nprogress.done()
+
+    
+    
+
     return res.data
 },(error)=>{
-    console.log(1)
+     return Promise.reject(error)
 })
 
 export default requests

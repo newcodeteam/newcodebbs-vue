@@ -3,62 +3,61 @@
     <img src="..\public\背景logo.png" alt="" />
 
     <Verify
-		@success="'success'" 
-		:mode="'pop'"     
-		:captchaType="'blockPuzzle'"   
-        :imgSize="{ width: '330px', height: '155px' }" 
-        ref="verify"
+      @success="&quot;success&quot;;"
+      :mode="'pop'"
+      :captchaType="'blockPuzzle'"
+      :imgSize="{ width: '330px', height: '155px' }"
+      ref="verify"
     ></Verify>
 
     <div class="login">
-      <button class="log" @click="LogOrReg=false">注册</button>
-      <button class="log" ref="cli" @click="LogOrReg=true">登录</button>
-      
-        <transition-group appear-class="active" name="log" >
-          <Login v-show="LogOrReg" key="1"/>
-          <Register v-show="!LogOrReg" key="2"/>
-        </transition-group>
-      
+      <button class="log" @click="LogOrReg = false">注册</button>
+      <button class="log" ref="cli" @click="LogOrReg = true">登录</button>
+
+      <transition-group appear-class="active" name="log">
+        <Login v-show="LogOrReg" key="1" />
+        <Register v-show="!LogOrReg" key="2" />
+      </transition-group>
     </div>
   </div>
 </template>
 
 <script>
-import Login from '../../components/LoginAndRegister/Login.vue'
-import Register from '../../components/LoginAndRegister/Register.vue'
-import Verify from '../../components/LoginAndRegister/verifition/Verify.vue'
+import Login from "../../components/LoginAndRegister/Login.vue";
+import Register from "../../components/LoginAndRegister/Register.vue";
+import Verify from "../../components/LoginAndRegister/verifition/Verify.vue";
 export default {
   name: "login",
   data() {
     return {
-      LogOrReg:true
-    }
+      LogOrReg: true,
+    };
   },
   components: {
     Login,
     Register,
-    Verify
-    },methods:{
-      success(params){
-		  // params 返回的二次验证参数, 和登录参数一起回传给登录接口，方便后台进行二次验证
-      alert('123123')
-        },
-        useVerify(params){
-          console.log(params)
-            this.$refs.verify.show()
-        },
+    Verify,
+  },
+  methods: {
+    success(params) {
+      // params 返回的二次验证参数, 和登录参数一起回传给登录接口，方便后台进行二次验证
+      alert("123123");
     },
+    useVerify(email) {
+      this.$refs.verify.show(email);
+    },
+  },
   mounted() {
-    this.$bus.$on('useVerify',this.useVerify)
+    this.$bus.$on("useVerify", this.useVerify);
     this.$refs.cli.click();
   },
 };
 </script>
 
 <style scoped>
-body{
-    min-height: 100vh;
-    min-width: 100vw;
+body {
+  min-height: 100vh;
+  min-width: 100vw;
 }
 * {
   margin: 0;
@@ -80,8 +79,6 @@ body{
     transform: translateY(0px);
   }
 }
-
-
 
 a {
   text-decoration: none;

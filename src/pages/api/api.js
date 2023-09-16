@@ -1,4 +1,8 @@
 import requests from './requests'
-export const req=()=>{
-    return requests({url:'',method:'get'})
+export const reqCode=(params)=>{
+    return requests({
+        url: '/user/code',
+        method: 'post',
+        params 
+    })
 }
