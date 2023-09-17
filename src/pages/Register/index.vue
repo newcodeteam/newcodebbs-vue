@@ -1,7 +1,5 @@
 <template>
   <div class="back">
-    <!-- <img src="..\public\背景logo.png" alt="" /> -->
-
     <Verify
       @success="&quot;success&quot;;"
       :mode="'pop'"
@@ -9,39 +7,24 @@
       :imgSize="{ width: '330px', height: '155px' }"
       ref="verify"
     ></Verify>
-    <div class="login">
-      <el-button
-        type="primary"
-        round
-        @click="LogOrReg = !LogOrReg"
-        id="AccountOrCode"
-        >账号/验证码</el-button
-      >
-      <!-- <transition-group name="test"> -->
-      <Account v-show="LogOrReg" key="1" />
-      <Code v-show="!LogOrReg" key="2" />
-      <!-- </transition-group> -->
-
-      <el-link id="Register" @click="ToRegister">没有账号?</el-link>
+    <div class="Register">
+      <Register />
+      <el-link id="Login" @click="ToLogin">已有账号?启动!</el-link>
       <img src="./img/shanhe.png" alt="" id="logo" />
     </div>
   </div>
 </template>
 
 <script>
-import Account from "../../components/Login/Account.vue";
-import Code from "../../components/Login/Code.vue";
+import Register from "../../components/Register";
 import Verify from "../../components/Login/verifition/Verify.vue";
 export default {
   name: "login",
   data() {
-    return {
-      LogOrReg: true,
-    };
+    return {};
   },
   components: {
-    Account,
-    Code,
+    Register,
     Verify,
   },
   methods: {
@@ -51,9 +34,8 @@ export default {
     useVerify(email) {
       this.$refs.verify.show(email);
     },
-    ToRegister() {
-      //前往注册路由
-      this.$router.push({ name: "Register" });
+    ToLogin() {
+      this.$router.push({ name: "Login" });
     },
   },
   mounted() {
@@ -64,32 +46,22 @@ export default {
 </script>
 
 <style scoped>
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+}
 * {
   margin: 0;
   padding: 0;
 }
-/* .test-enter-active {
-  animation: test 0.5s linear;
-}
-.test-leave-active {
-  animation: test 0s linear reverse;
-}
-@keyframes test {
-  from {
-    display: none;
-  }
-  to {
-    display: block;
-  }
-} */
-#Register {
-  margin-top: 2%;
-  margin-left: 74%;
-  font-size: 17px;
-}
+
 #AccountOrCode {
   margin-left: 63%;
   margin-top: 10%;
+}
+#Login {
+  margin-left: 63%;
+  font-size: 17px;
 }
 .back {
   height: 100vh;
@@ -101,7 +73,7 @@ export default {
 }
 
 /* 登录框 */
-.login {
+.Register {
   height: 500px;
   width: 540px;
   color: white;
