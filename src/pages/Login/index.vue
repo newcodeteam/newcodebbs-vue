@@ -49,6 +49,7 @@ export default {
       // params 返回的二次验证参数, 和登录参数一起回传给登录接口，方便后台进行二次验证
     },
     useVerify(email) {
+      console.log("login");
       this.$refs.verify.show(email);
     },
     ToRegister() {

@@ -17,7 +17,7 @@ export function reqGet(data) {
 // 滑动或者点选验证
 export function reqCheck(data) {
   return request({
-    url: 'api/captcha/check',
+    url: '/api/captcha/check',
     method: 'post',
     data
   })

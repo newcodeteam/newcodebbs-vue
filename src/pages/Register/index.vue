@@ -39,6 +39,7 @@ export default {
     },
   },
   mounted() {
+    console.log("register");
     this.$bus.$on("useVerify", this.useVerify);
     // this.$refs.cli.click();
   },

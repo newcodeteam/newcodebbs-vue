@@ -1,10 +1,23 @@
 <template>
   <div>
     <el-input
-      v-model="accountNumber"
+      v-model="email"
       placeholder="请输入邮箱"
       class="input1"
     ></el-input>
+    <el-input
+      v-model="code"
+      @keydown.alt="checkCode"
+      placeholder="请输入验证码"
+      class="Code"
+    ></el-input>
+    <el-button
+      type="danger"
+      icon="el-icon-message"
+      circle
+      @click="useVerify"
+      id="getCode"
+    ></el-button>
   </div>
 </template>
 
@@ -13,17 +26,27 @@ export default {
   name: "Login",
   data() {
     return {
-      checked: true,
-      accountNumber: "",
-      password: "",
+      email: "",
+      code: "",
     };
   },
+
   methods: {
-    cli(target) {
-      console.log(target);
+    useVerify() {
+      this.$bus.$emit("useVerify", this.email);
     },
     login() {
-      // requests({url:'https://localhost:8080',method:'get'})
+      //发送登录请求
+      let CodeLogin = { email: this.email, code: this.code };
+      this.$store.dispatch("LogAndReg/Login", CodeLogin);
+    },
+  },
+  watch: {
+    code() {
+      if (this.code.length == 6) {
+        //登录
+        this.login();
+      }
     },
   },
 };
@@ -66,5 +89,13 @@ a {
   top: 10px;
   right: 10px;
   font-size: 16px;
+}
+.Code {
+  height: 60px;
+  margin: 2% 10%;
+  width: 30%;
+}
+#getCode {
+  margin-left: -7%;
 }
 </style>

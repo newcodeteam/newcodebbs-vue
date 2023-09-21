@@ -6,3 +6,10 @@ export const reqCode=(params)=>{
         params 
     })
 }
+export const reqCodeLogin=(data)=>{
+    return requests({
+        url: '/user/loginMail',
+        method: 'post',
+        data 
+    })
+}
