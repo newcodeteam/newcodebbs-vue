@@ -12,20 +12,29 @@ export default {
                 window.sessionStorage.removeItem('reqMsg')
             } 
         },
-        async Login({ commit }, mail, code) {
-            const result = await reqCodeLogin({ 'code':code,'mail':mail,'password':'' })
+        async Login({ commit }, data) {
+            const result = await reqCodeLogin( data )
             
             if (result.code == 200) {
-                //登录成功
-                console.log(result)
-            } 
+                //登录成功 已注册
+                commit(false)
+                
+            }
+            else if (result.code == 201) {
+                //登录成功 未注册
+                commit(true)
+            }
+            
         }
     },
     mutations:{
-
+        Login({ state }, isRegister) {
+            //修改注册状态
+            state.isRegister=isRegister
+        }
     },
     state:{
-
+        isRegister:true
     },
     getters:{
         

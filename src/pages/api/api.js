@@ -10,6 +10,6 @@ export const reqCodeLogin=(data)=>{
     return requests({
         url: '/user/loginMail',
         method: 'post',
-        data 
+        data
     })
 }

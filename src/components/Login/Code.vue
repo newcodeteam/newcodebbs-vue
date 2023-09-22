@@ -37,8 +37,9 @@ export default {
     },
     login() {
       //发送登录请求
-      let CodeLogin = { email: this.email, code: this.code };
+      let CodeLogin = { mail: this.email, code: this.code };
       this.$store.dispatch("LogAndReg/Login", CodeLogin);
+      !this.$store.state.LogAndReg.isRegister?this.$router.push({name:'Register',})
     },
   },
   watch: {
