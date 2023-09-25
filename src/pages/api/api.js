@@ -1,4 +1,5 @@
 import requests from './requests'
+//获取验证码
 export const reqCode=(params)=>{
     return requests({
         url: '/user/code',
@@ -6,6 +7,7 @@ export const reqCode=(params)=>{
         params 
     })
 }
+//验证码登录
 export const reqCodeLogin=(data)=>{
     return requests({
         url: '/user/loginMail',

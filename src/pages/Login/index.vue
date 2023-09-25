@@ -1,7 +1,6 @@
 <template>
   <div class="back">
-    <!-- <img src="..\public\背景logo.png" alt="" /> -->
-
+    <!-- 滑块验证 -->
     <Verify
       @success="&quot;success&quot;;"
       :mode="'pop'"
@@ -45,21 +44,17 @@ export default {
     Verify,
   },
   methods: {
-    success(params) {
-      // params 返回的二次验证参数, 和登录参数一起回传给登录接口，方便后台进行二次验证
-    },
+    //触发滑块验证
     useVerify(email) {
-      console.log("login");
       this.$refs.verify.show(email);
     },
+    //前往注册页面
     ToRegister() {
-      //前往注册路由
       this.$router.push({ name: "Register" });
     },
   },
   mounted() {
     this.$bus.$on("useVerify", this.useVerify);
-    // this.$refs.cli.click();
   },
 };
 </script>

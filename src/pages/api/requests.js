@@ -10,24 +10,23 @@ const requests=axios.create({
         'Content-Type': 'application/json; charset=UTF-8'
     }
 })
-requests.interceptors.request.use((config)=>{
+//请求拦截器
+requests.interceptors.request.use((config) => {
+    //加载进度条
     nprogress.start()
     //将验证码标识放入请求头中进行发送
-    console.log('请求一次')
     let reqMsg = sessionStorage.getItem("reqMsg")
+    let token = store.state.LogAndReg.token
     
-    if (reqMsg) {
-        
-        config.headers["reqMsg"] = reqMsg
-    }
-
+    reqMsg?config.headers["reqMsg"] = reqMsg:''
+    token ? config.headers['token'] = token : ''
+    console.log(token)
     return config
 })
+//返回值拦截器
 requests.interceptors.response.use((res)=>{
     nprogress.done()
 
-    
-    
 
     return res.data
 },(error)=>{

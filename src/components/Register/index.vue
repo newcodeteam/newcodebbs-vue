@@ -1,17 +1,17 @@
 <template>
   <div>
     <div>
-      <el-input
+      <!-- <el-input
         v-model="email"
         placeholder="请输入邮箱"
         class="input1"
-      ></el-input>
+      ></el-input> -->
 
       <el-input
         placeholder="请输入密码"
         v-model="password1"
         show-password
-        class="input2"
+        class="input1"
         size="big"
       ></el-input>
       <el-input
@@ -22,26 +22,25 @@
         size="big"
       ></el-input>
 
-      <el-input
+      <!-- <el-input
         placeholder="请输入验证码"
         v-model="Code"
         class="Code"
         size="big"
-      ></el-input>
+      ></el-input> -->
 
-      <el-button
+      <!-- <el-button
         type="danger"
         icon="el-icon-message"
         circle
         @click="useVerify"
         id="getCode"
-      ></el-button>
+      ></el-button> -->
     </div>
   </div>
 </template>
 
 <script>
-import Verify from "./verifition/Verify.vue";
 export default {
   name: "Register",
   data() {
@@ -52,18 +51,15 @@ export default {
       Code: "",
     };
   },
-  components: {
-    Verify,
-  },
+  components: {},
 
   methods: {
     showTime() {
       this.show = true;
     },
-    useVerify() {
-      this.showEmail = false;
-      this.$bus.$emit("useVerify", this.email);
-    },
+    // useVerify() {
+    //   this.$bus.$emit("useVerify", this.email);
+    // },
     register() {
       console.log(this.password2);
     },
@@ -80,7 +76,7 @@ export default {
   margin: 1% 10%;
 }
 .input1 {
-  margin-top: 15%;
+  margin-top: 10%;
 }
 .Code {
   width: 30%;

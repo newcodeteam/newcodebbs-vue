@@ -1,15 +1,16 @@
 <template>
   <div class="back">
-    <Verify
+    <!-- <Verify
       @success="&quot;success&quot;;"
       :mode="'pop'"
       :captchaType="'blockPuzzle'"
       :imgSize="{ width: '330px', height: '155px' }"
       ref="verify"
-    ></Verify>
+    ></Verify> -->
     <div class="Register">
+      <el-link id="Login" @click="ToHome">进入首页</el-link>
       <Register />
-      <el-link id="Login" @click="ToLogin">已有账号?启动!</el-link>
+
       <img src="./img/shanhe.png" alt="" id="logo" />
     </div>
   </div>
@@ -17,7 +18,7 @@
 
 <script>
 import Register from "../../components/Register";
-import Verify from "../../components/Login/verifition/Verify.vue";
+// import Verify from "../../components/Login/verifition/Verify.vue";
 export default {
   name: "login",
   data() {
@@ -25,21 +26,21 @@ export default {
   },
   components: {
     Register,
-    Verify,
+    // Verify,
   },
   methods: {
-    success(params) {
-      // params 返回的二次验证参数, 和登录参数一起回传给登录接口，方便后台进行二次验证
-    },
-    useVerify(email) {
-      this.$refs.verify.show(email);
-    },
-    ToLogin() {
-      this.$router.push({ name: "Login" });
+    // success(params) {
+    // params 返回的二次验证参数, 和登录参数一起回传给登录接口，方便后台进行二次验证
+    // },
+    // useVerify(email) {
+    //   this.$refs.verify.show(email);
+    // },
+    //前往首页
+    ToHome() {
+      this.$router.push({ name: "Home" });
     },
   },
   mounted() {
-    console.log("register");
     this.$bus.$on("useVerify", this.useVerify);
     // this.$refs.cli.click();
   },
@@ -61,7 +62,8 @@ body {
   margin-top: 10%;
 }
 #Login {
-  margin-left: 63%;
+  margin-top: 10%;
+  margin-left: 70%;
   font-size: 17px;
 }
 .back {

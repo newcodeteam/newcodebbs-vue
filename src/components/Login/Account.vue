@@ -32,15 +32,16 @@ export default {
   name: "Login",
   data() {
     return {
+      //是否记住密码
       checked: true,
+      //账号
       accountNumber: "",
+      //密码
       password: "",
     };
   },
   methods: {
-    cli(target) {
-      console.log(target);
-    },
+    //密码登录
     login() {
       // requests({url:'https://localhost:8080',method:'get'})
     },

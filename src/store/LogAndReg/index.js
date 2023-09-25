@@ -17,24 +17,31 @@ export default {
             
             if (result.code == 200) {
                 //登录成功 已注册
-                commit(false)
-                
+                commit('Login', { isRegister: false, token: result.data })
+                return 'ok'
             }
             else if (result.code == 201) {
                 //登录成功 未注册
-                commit(true)
+                commit('Login', result.data)
+                return 'ok'
+            } else {
+                return Promise.reject(new Error(result.msg))
             }
             
         }
     },
     mutations:{
-        Login({ state }, isRegister) {
+        Login(state , data) {
             //修改注册状态
-            state.isRegister=isRegister
+            state.isRegister = data.isRegister
+            state.token=data.token
         }
     },
-    state:{
-        isRegister:true
+    state: {
+        //是否需要设置密码
+        isRegister: true,
+        //登录凭证
+        token:''
     },
     getters:{
         

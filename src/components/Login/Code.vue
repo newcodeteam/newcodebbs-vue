@@ -26,7 +26,9 @@ export default {
   name: "Login",
   data() {
     return {
+      //邮箱
       email: "",
+      //验证码
       code: "",
     };
   },
@@ -35,15 +37,30 @@ export default {
     useVerify() {
       this.$bus.$emit("useVerify", this.email);
     },
+    //验证码登录
     login() {
-      //发送登录请求
       let CodeLogin = { mail: this.email, code: this.code };
-      this.$store.dispatch("LogAndReg/Login", CodeLogin);
-      !this.$store.state.LogAndReg.isRegister?this.$router.push({name:'Register',})
+      let promise = this.$store.dispatch("LogAndReg/Login", CodeLogin);
+      promise
+        .then((result) => {
+          if (this.$store.state.LogAndReg.token) {
+            //判断是否需要输入更新密码
+            console.log(this.$store.state.LogAndReg.isRegister);
+            //跳转到 注册/首页
+            this.$store.state.LogAndReg.isRegister
+              ? this.$router.push("Register")
+              : this.$router.push("Home");
+          }
+        })
+        .catch((err) => {
+          //错误信息弹框
+          alert(err);
+        });
     },
   },
   watch: {
     code() {
+      //输入验证码后自动登录
       if (this.code.length == 6) {
         //登录
         this.login();
