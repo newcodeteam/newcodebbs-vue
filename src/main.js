@@ -5,11 +5,12 @@ import router from './router/index'
 //引入vuex
 import store from './store'
 //引入Element UI组件库
-import { Button,Link ,Checkbox,Input} from 'element-ui'
+import { Button,Link ,Checkbox,Input, Icon} from 'element-ui'
 Vue.use(Button)
 Vue.use(Link)
 Vue.use(Checkbox)
 Vue.use(Input)
+Vue.use(Icon)
 
 Vue.config.productionTip = false
 new Vue({
