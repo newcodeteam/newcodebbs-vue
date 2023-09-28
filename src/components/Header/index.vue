@@ -49,16 +49,17 @@ export default {
 <style>
 /* 导航栏头部 */
 .header {
-  height: 9vh;
+  height: 7vh;
   width: 100vw;
   background-color: #2175f3;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
 }
 /* 左侧内容 */
 .left {
-  width: 80%;
+  width: 70%;
   display: flex;
   align-items: center;
 }
@@ -89,7 +90,7 @@ img {
   display: flex;
   align-items: center;
   position: relative;
-  width: 60%;
+  width: 50%;
 }
 .el-icon-search {
   font-size: 20px;
