@@ -5,7 +5,7 @@
       <a id="logo" href=""><img src="./logo.png" alt="" /></a>
       <div class="search">
         <i class="el-icon-search"></i>
-        <el-input v-model="search" placeholder="搜索..."></el-input>
+        <el-input v-model="search" placeholder="搜索..." id="top"></el-input>
         <div class="menu">
           <div id="tittle"><el-checkbox /><span>仅搜索标题</span></div>
           <div id="user">
@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* 导航栏头部 */
 .header {
   height: 7vh;
@@ -77,13 +77,13 @@ img {
   width: 124px;
 }
 /* 搜索框 */
-.el-input input {
+.search .el-input /deep/ #top {
   padding: 0% 15px 0 30px;
   background-color: #438af5;
   border: none;
   border-radius: 8px;
 }
-.el-input input::placeholder {
+.search .el-input /deep/ #top ::placeholder {
   color: white;
 }
 .search {
@@ -98,11 +98,12 @@ img {
   left: 5px;
   z-index: 1;
 }
-.el-input input:focus {
+.search .el-input /deep/ #top:focus {
   background-color: white;
 }
 /* 搜索框弹窗 */
 .menu {
+  display: none;
   position: absolute;
   bottom: -151px;
   border-radius: 8px;
@@ -138,11 +139,11 @@ img {
   width: 50px;
   margin-left: 2%;
 }
-#te {
+#user .el-input /deep/ .el-input__inner {
   background-color: #f1f3fb;
 }
 
-#te::placeholder {
+#user .el-input /deep/ .el-input__inner::placeholder {
   color: gray;
 }
 /* 弹框下部 */
