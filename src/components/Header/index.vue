@@ -6,17 +6,22 @@
       <div class="search">
         <i class="el-icon-search"></i>
         <el-input v-model="search" placeholder="搜索..." id="top"></el-input>
-        <div class="menu">
-          <div id="tittle"><el-checkbox /><span>仅搜索标题</span></div>
-          <div id="user">
-            <span>作者:</span
-            ><el-input v-model="user" placeholder="会员" id="te"></el-input>
+        <!-- 搜索框弹窗 -->
+        <transition name="el-zoom-in-top">
+          <div v-show="show1 || show2" class="transition-box">
+            <div class="menu">
+              <div id="tittle"><el-checkbox /><span>仅搜索标题</span></div>
+              <div id="user">
+                <span>作者:</span
+                ><el-input v-model="user" placeholder="会员" id="te"></el-input>
+              </div>
+              <div id="bottom">
+                <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                <el-button type="text">Advanced...</el-button>
+              </div>
+            </div>
           </div>
-          <div id="bottom">
-            <el-button type="primary" icon="el-icon-search">搜索</el-button>
-            <el-button type="text">Advanced...</el-button>
-          </div>
-        </div>
+        </transition>
       </div>
     </div>
 
@@ -36,6 +41,8 @@ export default {
     return {
       search: "",
       user: "",
+      show1: false,
+      show2: true,
     };
   },
   methods: {
@@ -102,8 +109,17 @@ img {
   background-color: white;
 }
 /* 搜索框弹窗 */
+.transition-box {
+  width: 100%;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px 0px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
 .menu {
-  display: none;
   position: absolute;
   bottom: -151px;
   border-radius: 8px;
@@ -130,7 +146,7 @@ img {
   justify-content: space-around;
   align-items: center;
 }
-#user .el-input input {
+#user .el-input /deep/ #te {
   padding: 0 15px;
   height: 36px;
   width: 97%;

@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
-    <el-container style="height: 100%; border: 1px solid #eee">
-      <el-aside width="240px">
+    <el-container style="height: 100%">
+      <el-aside width="220px">
         <el-menu :default-openeds="['0']">
           <el-submenu index="1">
             <template slot="title"
@@ -71,7 +71,7 @@ export default {
   position: sticky;
   top: 0;
   height: 100%;
-  width: 240px;
+  width: 220px;
 }
 /* 去除下拉滚动条 */
 .el-aside::-webkit-scrollbar {
