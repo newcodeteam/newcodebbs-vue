@@ -28,7 +28,18 @@
             <div class="left">
               <List />
             </div>
-            <div class="right"></div>
+            <div class="right">
+              <!-- 右侧信息栏 -->
+              <div class="one">
+                <div>
+                  <i class="el-icon-user-solid"></i
+                  ><el-link href="" target="_blank">在线会员</el-link>
+                </div>
+                <div>现在没有会员在线.</div>
+                <div>当前在线: 3 (会员: 0,游客: 3)</div>
+              </div>
+              <News />
+            </div>
           </div>
         </el-main>
       </el-container>
@@ -41,9 +52,11 @@
 import Header from "../../components/Header";
 import Menu from "../../components/Body/menu";
 import List from "../../components/Body/list";
+import News from "../../components/Body/news";
+
 export default {
   name: "home",
-  components: { Header, Menu, List },
+  components: { Header, Menu, List, News },
 };
 </script>
 
@@ -58,7 +71,7 @@ a {
   z-index: 2;
 }
 .block {
-  height: 7vh;
+  height: 54px;
   width: 100%;
   background-color: #2175f3;
   position: fixed;
@@ -151,9 +164,42 @@ a {
 }
 .right {
   border: 1px solid darkblue;
-  height: 100px;
+  height: auto;
   width: 25%;
 }
+/* 右侧信息栏 */
+.one {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.one div {
+  padding: 13px;
+  color: #c4c0c0;
+  font-size: 13px;
+}
+.one :nth-child(1) {
+  padding: 5px 7px;
+  color: #c4c0c0;
+  display: flex;
+  align-items: center;
+}
+.one div:nth-child(2) {
+  color: black;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 15px 0 rgba(88, 106, 153, 0.2);
+}
+.one div:nth-child(3) {
+  color: black;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: rgb(213, 213, 216);
+  box-shadow: 0 4px 15px 0 rgba(88, 106, 153, 0.2);
+}
+
 /* 底部 */
 Footer {
   background-color: #ecf2fb;

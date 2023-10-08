@@ -3,28 +3,27 @@
     <div class="left">
       <a href="" @click.prevent="t()"><i class="el-icon-more"></i></a>
       <a id="logo" href=""><img src="./logo.png" alt="" /></a>
-      <div class="search">
-        <i class="el-icon-search"></i>
-        <el-input v-model="search" placeholder="搜索..." id="top"></el-input>
-        <!-- 搜索框弹窗 -->
-        <transition name="el-zoom-in-top">
-          <div v-show="show1 || show2" class="transition-box">
-            <div class="menu">
-              <div id="tittle"><el-checkbox /><span>仅搜索标题</span></div>
-              <div id="user">
-                <span>作者:</span
-                ><el-input v-model="user" placeholder="会员" id="te"></el-input>
-              </div>
-              <div id="bottom">
-                <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                <el-button type="text">Advanced...</el-button>
-              </div>
+    </div>
+    <div class="search">
+      <i class="el-icon-search"></i>
+      <el-input v-model="search" placeholder="搜索..." id="top"></el-input>
+      <!-- 搜索框弹窗 -->
+      <transition name="el-zoom-in-top">
+        <div v-show="show1 || show2" class="transition-box">
+          <div class="menu">
+            <div id="tittle"><el-checkbox /><span>仅搜索标题</span></div>
+            <div id="user">
+              <span>作者:</span
+              ><el-input v-model="user" placeholder="会员" id="te"></el-input>
+            </div>
+            <div id="bottom">
+              <el-button type="primary" icon="el-icon-search">搜索</el-button>
+              <el-button type="text">Advanced...</el-button>
             </div>
           </div>
-        </transition>
-      </div>
+        </div>
+      </transition>
     </div>
-
     <div class="right">
       <el-link icon="el-icon-key" :underline="false" class="link">登录</el-link>
       <el-link icon="el-icon-s-claim" :underline="false" class="link" id="link"
@@ -34,7 +33,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   name: "Header",
   data() {
@@ -63,11 +62,13 @@ export default {
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 1;
 }
 /* 左侧内容 */
 .left {
-  width: 70%;
+  width: 14%;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 .left a ~ *,
@@ -84,6 +85,12 @@ img {
   width: 124px;
 }
 /* 搜索框 */
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 45%;
+}
 .search .el-input /deep/ #top {
   padding: 0% 15px 0 30px;
   background-color: #438af5;
@@ -93,12 +100,7 @@ img {
 .search .el-input /deep/ #top ::placeholder {
   color: white;
 }
-.search {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 50%;
-}
+
 .el-icon-search {
   font-size: 20px;
   position: absolute;
@@ -187,9 +189,10 @@ img {
 }
 /* 登录 注册标签 */
 .right {
-  width: 20%;
+  width: 150px;
   display: flex;
   justify-content: flex-end;
+  margin-right: 5%;
 }
 #link {
   margin-right: 30px;
@@ -197,6 +200,9 @@ img {
 .link {
   margin-right: 10px;
   font-size: 16px;
+}
+.right .link:hover {
+  color: white;
 }
 .el-link.el-link--default {
   color: rgba(255, 255, 255, 0.7);
