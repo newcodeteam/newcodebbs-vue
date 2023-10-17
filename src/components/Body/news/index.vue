@@ -9,9 +9,11 @@
       <div>
         <img src="../../../assets/logo.png" alt="用户头像" />
         <div>
-          <el-link type="primary" :underline="false"
-            >{百度云}BaiduPCS--百度云Linux客户端</el-link
-          >
+          <span>
+            <el-link type="primary" :underline="false"
+              >{百度云}BaiduPCS--百度云Linux客户端</el-link
+            >
+          </span>
           <span>Linux下的百度云客户端</span>
           <span style="color: grey">SakuraPuare~已更新:2021-08-09</span>
         </div>
@@ -19,17 +21,15 @@
       <div>
         <img src="../../../assets/logo.png" alt="用户头像" />
         <div>
-          <el-link type="primary" :underline="false"
-            >{百度云}BaiduPCS--百度云Linux客户端</el-link
-          >
+          <span>
+            <el-link type="primary" :underline="false"
+              >{百度云}BaiduPCS--百度云Linux客户端</el-link
+            >
+          </span>
           <span>Linux下的百度云客户端</span>
           <span style="color: grey">SakuraPuare~已更新:2021-08-09</span>
         </div>
       </div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </div>
 </template>
@@ -67,7 +67,8 @@ img {
   flex-flow: column;
 }
 .news div div span {
-  font-size: 11px;
+  font-size: 1rem;
+  width: 220px;
 }
 .el-link {
   padding: 2px;

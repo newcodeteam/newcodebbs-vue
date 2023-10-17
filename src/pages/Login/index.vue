@@ -21,7 +21,9 @@
       <Code v-show="!LogOrReg" key="2" />
       <!-- </transition-group> -->
 
-      <el-link id="Register" @click="ToRegister">没有账号?</el-link>
+      <el-link id="Register" :plain="true" @click="ToRegister"
+        >没有账号?</el-link
+      >
       <img src="./img/shanhe.png" alt="" id="logo" />
     </div>
   </div>
@@ -50,7 +52,9 @@ export default {
     },
     //前往注册页面
     ToRegister() {
-      this.$router.push({ name: "Register" });
+      this.$message("页面已关闭 请联系管理员");
+
+      // this.$router.push({ name: "Register" });
     },
   },
   mounted() {

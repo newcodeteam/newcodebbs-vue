@@ -2,7 +2,7 @@ import requests from './requests'
 //获取验证码
 export const reqCode=(params)=>{
     return requests({
-        url: '/user/code',
+        url: '/user/register/code',
         method: 'post',
         params 
     })

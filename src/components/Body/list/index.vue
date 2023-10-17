@@ -11,46 +11,41 @@
         <div class="li">
           <div class="left">
             <i class="el-icon-chat-line-square"></i>
-            <div>
+            <div id="me">
               <el-link href="" @click.prevent="t()" target="_blank" id="m"
                 >Android</el-link
               >
             </div>
-          </div>
-          <div class="right">
-            <div class="zhuti">
-              <span>3</span>
-              <span>主题</span>
-            </div>
-            <div class="xiaoxi">
-              <span>5</span>
-              <span>消息</span>
-            </div>
-            <div class="asd">
-              <img src="../../../assets/logo.png" alt="用户头像" />
+            <!-- 手机端使用 -->
+            <div class="right2">
+              <el-link href="" @click.prevent="t()" target="_blank" id="m"
+                >Android</el-link
+              >
               <div>
-                <span>Java开发入门</span>
-                <span id="time"
-                  >2021-05-25~<el-link
-                    href=""
-                    @click.prevent="t()"
-                    target="_blank"
-                    >用户名</el-link
-                  ></span
+                <span style="color: #afb0b3"
+                  ><span style="color: black">3 </span>主题
+                </span>
+                <span style="color: #afb0b3"
+                  ><span style="color: black">3 </span>消息
+                </span>
+              </div>
+              <span style="font-size: 14px; padding: 5px 0 0 0"
+                >Java开发入门</span
+              >
+              <div style="display: flex; font-size: 13px; color: #afb0b3">
+                <span>2021-5-25-</span>
+                <el-link
+                  href=""
+                  @click.prevent=""
+                  target="_blank"
+                  style="color: #afb0b3"
+                >
+                  用户名</el-link
                 >
               </div>
             </div>
           </div>
-        </div>
-        <div class="li">
-          <div class="left">
-            <i class="el-icon-chat-line-square"></i>
-            <div>
-              <el-link href="" @click.prevent="t()" target="_blank" id="m"
-                >Android</el-link
-              >
-            </div>
-          </div>
+          <!-- PC端使用 -->
           <div class="right">
             <div class="zhuti">
               <span>3</span>
@@ -127,8 +122,8 @@ img {
 
 /* 每一条内容 */
 .li {
-  padding: 8px 0;
-  height: 50px;
+  padding: 8px 0px;
+  height: auto;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -137,35 +132,51 @@ img {
 .li:hover {
   background-color: rgb(229, 228, 230);
 }
+/* 内容左侧 */
 .left {
   width: 50%;
   display: flex;
 }
 #m {
-  padding: 7px;
+  padding: 0 7px;
+  font-size: 16px;
+  width: 50px;
 }
 .el-icon-chat-line-square {
   font-size: 25px;
   color: #afb0b3;
   padding: 10px;
 }
+/* 手机端样式隐藏 */
+.right2 {
+  display: none;
+}
+/* 内容右侧 */
 .right {
   display: flex;
+  justify-content: flex-end;
+  width: 50%;
 }
+/* 主题 / 消息*/
 .zhuti {
   border-right: gray 1px solid;
 }
 .zhuti,
 .xiaoxi {
-  padding: 0 15px;
+  padding: 0 8px;
   display: flex;
   flex-flow: column;
 }
 .zhuti :nth-child(2),
 .xiaoxi :nth-child(2) {
   color: #afb0b3;
-  font-size: 4px;
+  font-size: 0.9rem;
 }
+.zhuti span,
+.xiaoxi span {
+  width: 30px;
+}
+/* 内容信息 */
 .asd {
   padding: 0 15px;
   display: flex;
@@ -178,14 +189,42 @@ img {
 }
 .asd div span {
   text-align: start;
+  width: 100%;
+  font-size: 0.9rem;
 }
+/* 内容日期 */
 #time *,
 #time {
-  font-size: 2px;
   display: flex;
   color: #afb0b3;
+  font-size: 0.6rem;
 }
 #time /deep/ .el-link:hover {
   color: #409eff;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 769px) {
+  /* 博主头像隐藏 */
+  .asd img {
+    display: none;
+  }
+  #me {
+    display: none;
+  }
+  .left {
+    width: 100%;
+  }
+  /* 手机端样式 */
+  .right2 {
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column;
+  }
+  /* PC端样式隐藏 */
+  .right {
+    display: none;
+  }
 }
 </style>

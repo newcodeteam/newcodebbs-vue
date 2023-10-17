@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="left">
+    <div class="left" style="width: 200px">
       <a href="" @click.prevent="t()"><i class="el-icon-more"></i></a>
       <a id="logo" href=""><img src="./logo.png" alt="" /></a>
     </div>
@@ -41,12 +41,12 @@ export default {
       search: "",
       user: "",
       show1: false,
-      show2: true,
+      show2: false,
     };
   },
   methods: {
     t() {
-      console.log(111);
+      this.$bus.$emit("show");
     },
   },
 };
@@ -71,6 +71,10 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.left a:nth-child(1) {
+  transition-duration: 0.5s;
+  transform: translateY(-100px);
+}
 .left a ~ *,
 .left a {
   margin-left: 20px;
@@ -90,6 +94,7 @@ img {
   align-items: center;
   position: relative;
   width: 45%;
+  transition-duration: 0.5s;
 }
 .search .el-input /deep/ #top {
   padding: 0% 15px 0 30px;
@@ -200,11 +205,20 @@ img {
 .link {
   margin-right: 10px;
   font-size: 16px;
+  width: 60px;
 }
 .right .link:hover {
   color: white;
 }
 .el-link.el-link--default {
   color: rgba(255, 255, 255, 0.7);
+}
+@media screen and (max-width: 769px) {
+  .left a:nth-child(1) {
+    transform: translateY(0);
+  }
+  .search {
+    transform: translateY(-300px);
+  }
 }
 </style>

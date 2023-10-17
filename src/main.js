@@ -7,22 +7,26 @@ import store from './store'
 //引入Element UI组件库
 
 
+import ElementUI from 'element-ui'
+Vue.use(ElementUI);
 
-import { Button,Link,Menu,Submenu,MenuItem,MenuItemGroup,Header,Aside,Main ,Radio,Checkbox,Input, Icon, Container} from 'element-ui'
-Vue.use(Link)
-Vue.use(Icon)
-Vue.use(Menu);
-Vue.use(Submenu);
-Vue.use(MenuItem);
-Vue.use(MenuItemGroup);
-Vue.use(Input);
-Vue.use(Radio);
-Vue.use(Checkbox);
-Vue.use(Button);
-Vue.use(Container);
-Vue.use(Header);
-Vue.use(Aside);
-Vue.use(Main);
+// import { Button,Link,Menu,Submenu,MenuItem,MenuItemGroup,Header,Aside,Main ,Radio,Checkbox,Input, Icon, Container, Message} from 'element-ui'
+// Vue.use(Link)
+// Vue.use(Icon)
+// Vue.use(Menu);
+// Vue.use(Submenu);
+// Vue.use(MenuItem);
+// Vue.use(MenuItemGroup);
+// Vue.use(Input);
+// Vue.use(Radio);
+// Vue.use(Checkbox);
+// Vue.use(Button);
+// Vue.use(Container);
+// Vue.use(Header);
+// Vue.use(Aside);
+// Vue.use(Main);
+// Vue.use(Message);
+
 Vue.config.productionTip = false
 new Vue({
   render: h => h(App),

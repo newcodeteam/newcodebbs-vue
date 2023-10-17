@@ -4,12 +4,17 @@
       <!-- 头部导航栏 -->
       <el-header style="height: 13vh"
         ><Header />
-        <div class="block"><a href="" id="dd">论坛列表</a></div>
+        <div class="block">
+          <a href="" id="dd">论坛列表</a>
+        </div>
       </el-header>
 
       <el-container>
         <!-- 左侧导航 -->
-        <el-aside width="220px"><Menu /></el-aside>
+        <div :class="show3 ? 'menu2' : 'menu1'">
+          <el-aside style="220px"><Menu /></el-aside>
+        </div>
+
         <!-- 右侧body -->
         <el-main>
           <!-- 欢迎框头部 -->
@@ -26,6 +31,9 @@
           <!-- 页面主体 -->
           <div class="body">
             <div class="left">
+              <List />
+              <List />
+              <List />
               <List />
             </div>
             <div class="right">
@@ -57,10 +65,25 @@ import News from "../../components/Body/news";
 export default {
   name: "home",
   components: { Header, Menu, List, News },
+  data() {
+    return {
+      show3: false,
+    };
+  },
+  methods: {
+    show2() {
+      this.show3 = !this.show3;
+    },
+  },
+  mounted() {
+    this.$bus.$on("show", this.show2);
+  },
 };
 </script>
 
 <style scoped>
+/* PC端 */
+
 /* 标题栏 */
 a {
   text-decoration: none;
@@ -71,6 +94,7 @@ a {
   z-index: 2;
 }
 .block {
+  position: relative;
   height: 54px;
   width: 100%;
   background-color: #2175f3;
@@ -78,13 +102,24 @@ a {
   top: 7vh;
   text-align: center;
   z-index: -2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+/* 菜单 */
 #dd {
-  position: relative;
-  padding: 14px;
-  border-bottom: 4px solid rgb(255, 255, 255);
-  top: 2vh;
+  position: absolute;
+  font-size: 1rem;
+  width: 100px;
   color: white;
+}
+.block::after {
+  content: "";
+  height: 2px;
+  width: 100px;
+  background-color: white;
+  bottom: 0;
+  position: absolute;
 }
 /* 中间内容区 */
 
@@ -102,6 +137,12 @@ a {
 }
 
 /* 左侧导航栏 */
+.menu1,
+.menu2 {
+  width: 220px;
+  transition-duration: 0.3s;
+}
+
 .el-aside {
   height: 800px;
   position: sticky;
@@ -110,8 +151,10 @@ a {
 .el-aside::-webkit-scrollbar {
   display: none;
 }
+
 /* 右侧主体欢迎页 */
 .welcome {
+  transition-duration: 0.5;
   display: flex;
   justify-content: space-between;
 }
@@ -128,6 +171,7 @@ a {
 }
 /* 欢迎框 */
 .mediu {
+  transition-duration: 0.5s;
   height: 153.8px;
   margin-top: 25px;
   background-color: #afcbf7;
@@ -163,7 +207,7 @@ a {
   width: 70%;
 }
 .right {
-  border: 1px solid darkblue;
+  transition-duration: 0.5s;
   height: auto;
   width: 25%;
 }
@@ -205,5 +249,59 @@ Footer {
   background-color: #ecf2fb;
   height: 200px;
   width: 100%;
+}
+
+/* 移动端 */
+@media screen and (max-width: 769px) {
+  /* 右侧状态栏隐藏 */
+  .right {
+    display: none;
+  }
+  /* 左侧导航栏隐藏 */
+  .menu1 {
+    /* transform: translateX(-200px); */
+    position: fixed;
+    top: 13vh;
+    z-index: -1;
+    opacity: 0;
+    width: 0;
+  }
+  .el-aside /deep/ .el-menu {
+    margin-top: 20px;
+  }
+
+  .menu2 {
+    z-index: 2;
+    /* background-color: rgba(124, 123, 122, 0.562); */
+    position: fixed;
+    top: 13vh;
+    opacity: 1;
+    width: 100%;
+  }
+  /* 左侧导航栏弹出阴影 */
+  .menu2::after {
+    content: "";
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition-duration: 0;
+    background-color: rgba(124, 123, 122, 0.562);
+    width: 100%;
+    height: 1200px;
+  }
+  /* 列表部分宽度适配 */
+  .left {
+    width: 100%;
+  }
+  /* 列表部分总体居中 */
+  .body {
+    width: 100%;
+    justify-content: center;
+  }
+  .mediu {
+    width: 100%;
+  }
 }
 </style>
