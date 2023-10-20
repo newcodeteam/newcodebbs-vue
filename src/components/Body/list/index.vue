@@ -190,7 +190,7 @@ img {
 .asd div span {
   text-align: start;
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 /* 内容日期 */
 #time *,
